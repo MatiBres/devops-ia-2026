@@ -1,9 +1,9 @@
 name: CI-CD - Terraform y web
 on:
   pull_request:
-     branches: [develop]
+     branches: [develop_Bressan]
   push:
-     branches: [develop]
+     branches: [develop_Bressan]
   workflow_dispatch:
      inputs:
        operation:
@@ -44,7 +44,7 @@ jobs:
             retention-days: 7
   cd:
     needs: ci
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/develop'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/develop_Bressan'
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     permissions:
@@ -64,7 +64,7 @@ jobs:
          with:
            terraform_version: 1.13.5
            terraform_wrapper: false
-       - uses: aws-actions/configure-aws-credentials@v6.3.0
+       - uses: aws-actions/configure-aws-credentials@v6
          with:
            role-to-assume: ${{ vars.AWS_ROLE_ARN }}
            aws-region: ${{ vars.AWS_REGION }}
