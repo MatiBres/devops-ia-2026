@@ -2,3 +2,4 @@
 ambiente: desarrollo
 modo_mantenimiento: true
 replicas: 1
+timeout_segundos: 30
